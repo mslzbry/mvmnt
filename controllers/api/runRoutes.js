@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { Run, User } = require('../../models')
+const withAuth = require('../../utils/auth');
 
 // The `/api/runs` endpoint
 
@@ -27,7 +28,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newRun = await Run.create({
       ...req.body,
@@ -40,7 +41,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const runData = await Run.destroy({
       where: {
