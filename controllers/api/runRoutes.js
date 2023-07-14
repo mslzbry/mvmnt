@@ -1,6 +1,36 @@
 const router = require('express').Router()
 const { Run } = require('../../models')
 
+router.get('/', (req, res) => {
+  Run.findAll({
+    attributes: [
+      'id',
+      'name',
+      'distance_ran',
+      'time_ran',
+      'date_created',
+      'user_id'
+    ],
+    include: [
+      {
+        model: Category,
+        attributes: ['id', 'name', 'email']
+      }
+    ]
+  })
+    .then(data => {
+      if (!data) {
+        res.status(404).json({ message: 'No categories found' })
+        return
+      }
+      res.json(data)
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json(err)
+    })
+})
+
 router.post('/', async (req, res) => {
   try {
     const newRun = await Run.create({

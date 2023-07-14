@@ -1,5 +1,21 @@
 const router = require('express').Router()
-const { User } = require('../../models')
+const { User, Run } = require('../../models')
+
+router.get('/', (req, res) => {
+  User.findAll({
+    attributes: ['id', 'name', 'email'],
+    include: [
+      {
+        model: Run,
+        attributes: ['id', 'name', 'distance_ran', 'time_ran', 'date_created']
+      }
+    ]
+  })
+    .then(data => res.json(data))
+    .catch(err => {
+      res.status(500).json(err)
+    })
+})
 
 router.post('/', async (req, res) => {
   try {
