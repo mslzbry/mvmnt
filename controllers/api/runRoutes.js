@@ -1,37 +1,34 @@
 const router = require('express').Router()
-const { Run } = require('../../models')
+const { Run, User } = require('../../models')
+const withAuth = require('../../utils/auth');
 
-router.get('/', (req, res) => {
-  Run.findAll({
-    attributes: [
-      'id',
-      'name',
-      'distance_ran',
-      'time_ran',
-      'date_created',
-      'user_id'
-    ],
-    include: [
-      {
-        model: Category,
-        attributes: ['id', 'name', 'email']
-      }
-    ]
+// The `/api/runs` endpoint
+
+router.get('/', async (req, res) => {
+  try{
+    const newRun = await Run.findAll ({
+      include: [{ model: User }],
   })
-    .then(data => {
-      if (!data) {
-        res.status(404).json({ message: 'No categories found' })
-        return
-      }
-      res.json(data)
-    })
-    .catch(err => {
-      console.log(err)
-      res.status(500).json(err)
-    })
-})
+  
+    res.status(200).json(newRun)
+  } catch (err) {
+    res.status(400).json(err)
+  }
+});
 
-router.post('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
+  try{
+    const newRun = await Run.findByPk(req.params.id, {
+      include: [{ model: User }],
+  })
+  
+    res.status(200).json(newRun)
+  } catch (err) {
+    res.status(400).json(err)
+  }
+});
+
+router.post('/', withAuth, async (req, res) => {
   try {
     const newRun = await Run.create({
       ...req.body,
@@ -44,7 +41,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const runData = await Run.destroy({
       where: {

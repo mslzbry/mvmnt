@@ -1,21 +1,31 @@
 const router = require('express').Router()
-const { User, Run } = require('../../models')
+const { Run, User }= require('../../models')
 
-router.get('/', (req, res) => {
-  User.findAll({
-    attributes: ['id', 'name', 'email'],
-    include: [
-      {
-        model: Run,
-        attributes: ['id', 'name', 'distance_ran', 'time_ran', 'date_created']
-      }
-    ]
+// The `/api/users` endpoint
+
+router.get('/', async (req, res) => {
+  try{
+    const userData = await User.findAll ({
+      include: [{ model: Run }],
   })
-    .then(data => res.json(data))
-    .catch(err => {
-      res.status(500).json(err)
-    })
-})
+  
+    res.status(200).json(userData)
+  } catch (err) {
+    res.status(400).json(err)
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  try{
+    const userData = await User.findByPk(req.params.id, {
+      include: [{ model: Run }],
+  })
+  
+    res.status(200).json(userData)
+  } catch (err) {
+    res.status(400).json(err)
+  }
+});
 
 router.post('/', async (req, res) => {
   try {
@@ -30,7 +40,7 @@ router.post('/', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
-})
+});
 
 router.post('/login', async (req, res) => {
   try {
@@ -61,7 +71,7 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
-})
+});
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
@@ -71,6 +81,6 @@ router.post('/logout', (req, res) => {
   } else {
     res.status(404).end()
   }
-})
+});
 
 module.exports = router
