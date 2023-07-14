@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Run, User }= require('../../models')
+const { Run, User } = require('../../models')
 
 // The `/api/users` endpoint
 
