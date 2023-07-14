@@ -1,5 +1,31 @@
 const router = require('express').Router()
-const { Run } = require('../../models')
+const { Run, User } = require('../../models')
+
+// The `/api/runs` endpoint
+
+router.get('/', async (req, res) => {
+  try{
+    const newRun = await Run.findAll ({
+      include: [{ model: User }],
+  })
+  
+    res.status(200).json(newRun)
+  } catch (err) {
+    res.status(400).json(err)
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  try{
+    const newRun = await Run.findByPk(req.params.id, {
+      include: [{ model: User }],
+  })
+  
+    res.status(200).json(newRun)
+  } catch (err) {
+    res.status(400).json(err)
+  }
+});
 
 router.post('/', async (req, res) => {
   try {
