@@ -4,7 +4,7 @@ const { Run, User }= require('../../models')
 // The `/api/users` endpoint
 
 router.get('/', async (req, res) => {
-  try{
+  try {
     const userData = await User.findAll ({
       include: [{ model: Run }],
   })
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  try{
+  try {
     const userData = await User.findByPk(req.params.id, {
       include: [{ model: Run }],
   })
