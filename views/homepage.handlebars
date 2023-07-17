@@ -1,0 +1,28 @@
+<!-- Loop over each object in the projects array -->
+<div class="flex-column justify-space-around">
+  <h2>Everyones leaderboard</h2>
+{{#each runs as |run| }}
+<div class="row mb-4 run">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      <a href="/run/{{run.id}}">{{run.name}}</a>
+    </h2>
+    <p>
+      <!-- Pass needed_funding value to the helper function -->
+      <span class="distance-ran">Ran{{format_amount run.distance_ran}} miles!</span>
+
+    </p>
+       <p>
+      <!-- Pass needed_funding value to the helper function -->
+      <span class="time-ran">For{{format_amount run.time_ran}}minutes!</span>
+
+    </p>
+    <p>Created by {{run.user.name}} on {{format_date run.date_created}}</p>
+  </div>
+</div>
+{{/each}}
+</div>
+<div class="flex-column justify-space-around">
+  <h2>Profile leaderboard</h2>
+</div>

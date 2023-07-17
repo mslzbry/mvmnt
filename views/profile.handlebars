@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Run:</h3>
+
+    <form class="form new-run-form">
+      <div class="form-group">
+        <label for="run-name">run name:</label>
+        <input class="form-input" type="text" id="run-name" name="run-name" />
+      </div>
+      <div class="form-group">
+        <label for="run-distance">needed funding ("miles"):</label>
+        <input class="form-input" type="number" id="run-distance" name="run-distance" />
+      </div>
+       <div class="form-group">
+        <label for="run-time">needed funding ("minutes"):</label>
+        <input class="form-input" type="number" id="run-time" name="run-time" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if runs.length}}
+  <div class="col-md-6 run-list">
+    <h3>Recent runs:</h3>
+
+    {{#each runs as |run|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/run/{{run.id}}">{{run.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{run.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
