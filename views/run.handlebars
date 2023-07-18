@@ -5,8 +5,13 @@
 </div>
 
 <div class="row mt-4">
-  <div class="col-md-6">
+  <div class="create-run col-md-6">
     <h3>Create a New Run:</h3>
+
+    <h5>Draw markers for your running route</h5>
+
+    <div id="map"></div>
+
 
     <form class="form new-run-form">
       <div class="form-group">
@@ -32,7 +37,7 @@
   </div>
 
   {{#if runs.length}}
-  <div class="col-md-6 project-list">
+  <div class="col-md-6 run-list">
     <h3>Current Runs:</h3>
 
     {{#each runs as |run|}}
@@ -49,4 +54,6 @@
   {{/if}}
 </div>
 
+
 <script src="./js/run.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>

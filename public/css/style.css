@@ -5,6 +5,7 @@
     font-style: italic;
     font-size: large;
 }
+
 .no-button {
     background: none;
     border: none;
@@ -13,4 +14,8 @@
     color: #1b89bc;
     text-decoration: none;
     font-size: 100%;
-  }
+}
+
+#map {
+    height: 300px;
+}
