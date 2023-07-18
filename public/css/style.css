@@ -19,3 +19,18 @@
 #map {
     height: 300px;
 }
+  a {
+    background-color: orangered;
+    border: indigo;
+    border-radius: 30px;
+    font-size: medium;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  h4 {
+    font-size: large;
+    color: green;
+  }
+  body {
+    background-color: sandybrown ;
+  }
