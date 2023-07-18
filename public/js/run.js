@@ -77,6 +77,9 @@ document
   .querySelector('.new-run-form')
   .addEventListener('submit', newFormHandler)
 
-document.querySelector('.run-list').addEventListener('click', delButtonHandler)
+  if (document.querySelector('.run-list')) {
+    document.querySelector('.run-list').addEventListener('click', delButtonHandler)
+  }
+
 
 initMap()
