@@ -5,6 +5,7 @@
     font-style: italic;
     font-size: large;
 }
+
 .no-button {
     background: none;
     border: none;
@@ -13,7 +14,11 @@
     color: #1b89bc;
     text-decoration: none;
     font-size: 100%;
-  }
+}
+
+#map {
+    height: 300px;
+}
   a {
     background-color: orangered;
     border: indigo;
@@ -25,7 +30,6 @@
   h4 {
     font-size: large;
     color: green;
-
   }
   body {
     background-color: sandybrown ;
