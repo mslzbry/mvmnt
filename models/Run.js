@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize')
-const sequelize = require('../config/connection')
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Run extends Model {}
 
@@ -9,14 +9,15 @@ Run.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
+    // name of run
     name: {
       type: DataTypes.STRING,
       allowNull: false
     },
     distance_ran: {
-      type: DataTypes.INTEGER, // should this be integer?
+      type: DataTypes.INTEGER,
       alowNull: false
     },
     time_ran: {
@@ -24,15 +25,15 @@ Run.init(
       allowNull: false
     },
     date_created: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATE, 
       allowNull: false,
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.NOW,
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
-        key: 'id'
+        key: 'id',
       }
     }
   },
@@ -41,7 +42,7 @@ Run.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'run'
+    modelName: 'run',
   }
 )
 
