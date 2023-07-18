@@ -1,34 +1,35 @@
 const router = require('express').Router()
 const { Run, User } = require('../../models')
-const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth')
 
 // The `/api/runs` endpoint
 
 router.get('/', async (req, res) => {
   try {
-    const newRun = await Run.findAll ({
-      include: [{ model: User }],
-  })
-  
+    const newRun = await Run.findAll({
+      include: [{ model: User }]
+    })
+
     res.status(200).json(newRun)
   } catch (err) {
     res.status(400).json(err)
   }
-});
+})
 
 router.get('/:id', async (req, res) => {
   try {
     const newRun = await Run.findByPk(req.params.id, {
-      include: [{ model: User }],
-  })
-  
+      include: [{ model: User }]
+    })
+
     res.status(200).json(newRun)
   } catch (err) {
     res.status(400).json(err)
   }
-});
+})
 
 router.post('/', withAuth, async (req, res) => {
+  console.log('create a new run api')
   try {
     const newRun = await Run.create({
       ...req.body,
@@ -37,6 +38,7 @@ router.post('/', withAuth, async (req, res) => {
 
     res.status(200).json(newRun)
   } catch (err) {
+    console.log('error is ', err)
     res.status(400).json(err)
   }
 })
