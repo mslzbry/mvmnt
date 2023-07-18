@@ -1,31 +1,31 @@
 const router = require('express').Router()
-const { Run, User }= require('../../models')
+const { Run, User } = require('../../models')
 
 // The `/api/users` endpoint
 
 router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll ({
-      include: [{ model: Run }],
-  })
-  
+    const userData = await User.findAll({
+      include: [{ model: Run }]
+    })
+
     res.status(200).json(userData)
   } catch (err) {
     res.status(400).json(err)
   }
-});
+})
 
 router.get('/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
-      include: [{ model: Run }],
-  })
-  
+      include: [{ model: Run }]
+    })
+
     res.status(200).json(userData)
   } catch (err) {
     res.status(400).json(err)
   }
-});
+})
 
 router.post('/', async (req, res) => {
   try {
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
-});
+})
 
 router.post('/login', async (req, res) => {
   try {
@@ -71,7 +71,7 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
-});
+})
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
@@ -81,6 +81,6 @@ router.post('/logout', (req, res) => {
   } else {
     res.status(404).end()
   }
-});
+})
 
 module.exports = router
