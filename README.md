@@ -1,4 +1,4 @@
-# project2
+# mvmnt
 
 ## Description
 Project2 is a fitness web application that helps keep track of your run stats. This app connects you with other users run stats. 
@@ -19,11 +19,11 @@ n/a
 ## Visuals
 
 ## GitHub Repo
-[Project2 GitHub Repo](https://github.com/mslzbry/project2)
+[mvmnt GitHub Repo](https://github.com/mslzbry/mvmnt)
 
 ## Deployed Site
 
-[Project2 Deployed Site](https://fast-scrubland-44894-b727f94b7e1a.herokuapp.com/)
+[mvmnt Deployed Site](https://fast-scrubland-44894-b727f94b7e1a.herokuapp.com/)
 
 ## Develop Instructions
 
