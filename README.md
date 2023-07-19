@@ -1,7 +1,7 @@
 # mvmnt
 
 ## Description
-Project2 is a fitness web application that helps keep track of your run stats. This app connects you with other users run stats. 
+mvmnt is a fitness web application that helps keep track of your run stats. This app connects you with other users run stats. 
 
 ## Table of Contents
 - [Description](#description)
