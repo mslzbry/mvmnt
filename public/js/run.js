@@ -7,15 +7,13 @@ const newFormHandler = async event => {
   const name = document.querySelector('#run-name').value.trim()
   const distance = document.querySelector('#run-distance').value.trim()
   const time = document.querySelector('#run-time').value.trim()
-  const location = document.querySelector('#run-location').value.trim()
   //const datetime = document.querySelector('#run-datetime').value.trim()
 
-  if (name && location && distance && time) {
+  if (name && distance && time) {
     const response = await fetch(`/api/runs`, {
       method: 'POST',
       body: JSON.stringify({
         name: name,
-        location: location,
         distance_ran: distance,
         time_ran: time
       }),
