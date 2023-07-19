@@ -3,28 +3,38 @@
 
 const newFormHandler = async event => {
   event.preventDefault()
+  const form = document.querySelector('.new-run-form')
+  if (!form.checkValidity()) {
+    event.stopPropagation()
+  }
+  else {
+    form.classList.add('was-validated')
 
-  const name = document.querySelector('#run-name').value.trim()
-  const distance = document.querySelector('#run-distance').value.trim()
-  const time = document.querySelector('#run-time').value.trim()
-  //const datetime = document.querySelector('#run-datetime').value.trim()
+    const name = document.querySelector('#run-name').value.trim()
+    const distance = document.querySelector('#run-distance').value.trim()
+    const time = document.querySelector('#run-time').value.trim()
 
-  if (name && distance && time) {
-    const response = await fetch(`/api/runs`, {
-      method: 'POST',
-      body: JSON.stringify({
-        name: name,
-        distance_ran: distance,
-        time_ran: time
-      }),
-      headers: {
-        'Content-Type': 'application/json'
+    if (name && distance && time) {
+      // if distance entered is an integer, need to add a decimal to convert it like so
+      // ex: user enters 2 for 2 miles ran. Need to convert this to 2.0
+      // this type needs to match the type set in the DB model or else it will break
+      const distanceDecimal = parseInt(distance).toFixed(1)
+      const response = await fetch(`/api/runs`, {
+        method: 'POST',
+        body: JSON.stringify({
+          name: name,
+          distance_ran: distanceDecimal,
+          time_ran: time
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      if (response.ok) {
+        document.location.replace('/run')
+      } else {
+        alert('Failed to create run')
       }
-    })
-    if (response.ok) {
-      document.location.replace('/run')
-    } else {
-      alert('Failed to create run')
     }
   }
 }

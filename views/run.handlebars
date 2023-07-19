@@ -12,26 +12,35 @@
 
     <div id="map"></div>
 
-
     <form class="form new-run-form">
-      <div class="form-group">
-        <label for="run-name">Run name:</label>
-        <input class="form-input" type="text" id="run-name" name="run-name" />
+      <div class="form-outline mb-4">
+        <label for="run-name">Run Name</label>
+        <input class="form-control" type="text" id="run-name" name="run-name" placeholder="Afternoon Beach Run"
+          required />
+        <div class="valid-feedback">
+          Looks good!
+        </div>
       </div>
-      <div class="form-group">
-        <label for="run-distance">Run distance:</label>
-        <input class="form-input" type="text" id="run-distance" name="run-distance" />
+      <div class="form-outline mb-4">
+        <label for="run-distance">Run Distance</label>
+        <input class="form-control mb-3" type="text" id="run-distance" name="run-distance"
+          placeholder="Enter in Miles (e.g. .5, 2.5)" required pattern="^\d{0,3}(?:\.\d)?$" />
+        <div class="valid-feedback">
+          Looks good!
+        </div>
       </div>
-      <div class="form-group">
-        <label for="run-time">Run time:</label>
-        <input class="form-input" type="text" id="run-time" name="run-time" />
+      <div class="form-outline mb-4">
+        <label for="run-time">Run Time</label>
+        <input class="form-control" type="text" id="run-time" name="run-time"
+          placeholder="Enter hh:mm:ss (e.g. 00:30:00)" required
+          pattern="^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$" />
       </div>
       {{!-- <div class="form-group">
         <label for="run-datetime">Date and time of run:</label>
         <input class="form-input" type="text" id="run-datetime" name="run-datetime" />
       </div> --}}
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
+      <div class="form-outline mb-4">
+        <button type="submit" class="btn btn-primary btn-block mb-6">Create</button>
       </div>
     </form>
   </div>
@@ -43,7 +52,14 @@
     {{#each runs as |run|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/run/{{run.id}}">{{run.name}}</a></h4>
+        <div class="card">
+          <div class="card-body">
+            <h4><a href="/run/{{run.id}}">{{run.name}}</a></h4>
+            Name: {{run.name}} <br>
+            Distance: {{run.distance_ran}} mile(s)<br>
+            Time: {{run.time_ran}}
+          </div>
+        </div>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{run.id}}">DELETE</button>
