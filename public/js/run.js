@@ -58,6 +58,7 @@ const delButtonHandler = async event => {
 // Google Maps API
 // Initialize and add the map
 let map;
+let markers = [];
 
 async function initMap() {
   // The location of San Diego
@@ -75,13 +76,60 @@ async function initMap() {
   });
 
   // The marker, positioned at Uluru
-  const marker = new AdvancedMarkerElement({
-    map: map,
-    position: position,
-    title: "San Diego",
+  // const marker = new AdvancedMarkerElement({
+  //   map: map,
+  //   position: position,
+  //   title: "San Diego",
+  // });
+
+  map.addListener("click", (event) => {
+    addMarker(event.latLng);
   });
+  // add event listeners for the buttons
+  document
+    .getElementById("show-markers")
+    .addEventListener("click", showMarkers);
+  document
+    .getElementById("hide-markers")
+    .addEventListener("click", hideMarkers);
+  document
+    .getElementById("delete-markers")
+    .addEventListener("click", deleteMarkers);
+  // Adds a marker at the center of the map.
+  addMarker(position);
 }
 
+function addMarker(position) {
+  const marker = new google.maps.Marker({
+    position,
+    map,
+  });
+
+  markers.push(marker);
+}
+
+// Sets the map on all markers in the array.
+function setMapOnAll(map) {
+  for (let i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function hideMarkers() {
+  setMapOnAll(null);
+}
+
+// Shows any markers currently in the array.
+function showMarkers() {
+  setMapOnAll(map);
+}
+
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+  hideMarkers();
+  markers = [];
+}
 
 document
   .querySelector('.new-run-form')
