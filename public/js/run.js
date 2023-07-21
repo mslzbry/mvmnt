@@ -12,18 +12,28 @@ const newFormHandler = async event => {
   }
   else {
     form.classList.add('was-validated')
-
-    
     const name = document.querySelector('#run-name').value.trim()
     const distance = document.querySelector('#run-distance').value.trim()
     const time = document.querySelector('#run-time').value.trim()
 
-
+    if (!lat && !lng) { // if markers aren't set, alert user because it is required
+      alert('Please create a marker for your run')
+    }
     if (name && distance && time && lat && lng) {
+
+      // need to do some conversion based on the user input for distance
+      let distanceDecimal
+      // check to see if the user input has a decimal like .5
+      if (distance.includes('.')) {
+        distanceDecimal = parseFloat(distance)
+      } else {
       // if distance entered is an integer, need to add a decimal to convert it like so
       // ex: user enters 2 for 2 miles ran. Need to convert this to 2.0
       // this type needs to match the type set in the DB model or else it will break
-      const distanceDecimal = parseInt(distance).toFixed(1)
+        distanceDecimal = parseInt(distance).toFixed(1)
+      }
+      console.log(distanceDecimal)
+
       const response = await fetch(`/api/runs`, {
         method: 'POST',
         body: JSON.stringify({
