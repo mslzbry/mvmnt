@@ -1,59 +1,36 @@
- <body>
-    <div class="container my-3 my-sm-5">
-      <h1 class="mb-3 mb-sm-5 text-center tomato-text">People's MVMT</h1>
-      <div class="row">
-        <div class="col-12 col-md-4 mb-4 card-block">
-          <div class="card card-outline-tomato text-center">
-            <div class="card-header tomato text-white">
-              <h2>Today's Activity</h2>
-              
-            </div>
-            <ul class="list-group large">
-                {{#each runs as |run|}}
-                {{> run-details}}
-                {{/each}}
-            </ul>
-            <div class="card-footer tomato text-center"></div>
+<body>
+  <div class="container my-3 my-sm-5">
+    <h1 class="mb-3 mb-sm-5 text-center tomato-text">People's mvmnt</h1>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-6 card-block">
+        <div class="card card-outline-tomato text-center">
+          <div class="card-header tomato text-white">
+            <h2>Today's Activity </h2>
+            <h4> {{ todaysDate }} </h4>
           </div>
+          <ul class="list-group large">
+            {{#each todaysRuns as |run|}}
+            {{> run-details}}
+            {{/each}}
+          </ul>
+          <div class="card-footer tomato text-center"></div>
         </div>
-        <div class="col-12 col-md-4 mb-4 card-block">
-          <div class="card card-outline-primary text-center">
-            <div class="card-header bg-primary text-white">
-              <h2>All Activity</h2>
-            </div>
-            <ul class="list-group large">
-                {{#each runs as |run|}}
-                {{> run-details}}
-                {{/each}}
-            </ul>
-            <div class="card-footer bg-primary"></div>
+      </div>
+      <div class="col-12 col-md-6 mb-6 card-block">
+        <div class="card card-outline-primary text-center">
+          <div class="card-header bg-primary text-white">
+            <h2>All Activity</h2>
+            <h4>All Time Record</h4>
+            </h5>
           </div>
-        </div>
-        <div class="col-12 col-md-4 mb-4 card-block">
-          <div class="card card-outline-primary text-center">
-            <div class="card-header bg-primary text-white">
-              <h2>Personal</h2>
-              {{#if logged_in}}
-              <h4> {{user.name}}'s runs</h4>
-            </div>
-            <ol class="list-group large">
-                
-                {{#if runs.length}}
-                {{#each runs as |run|}}
-                
-                <li class="list-group-item"><a href="/run/{{run.id}}"> {{run.name}}</a>
-                <a>{{user.name}} Ran {{run.distance_ran}} miles in {{run.time_ran}} minutes.</a>
-                </li>
-                {{/each}}
-                {{/if}}
-                {{else}}
-                <h4> Log in to view!</h4>
-                {{/if}}
-
-            </ol>
-            <div class="card-footer bg-primary"></div>
-          </div>
+          <ul class="list-group large">
+            {{#each allRuns as |run|}}
+            {{> run-details}}
+            {{/each}}
+          </ul>
+          <div class="card-footer bg-primary"></div>
         </div>
       </div>
     </div>
-    </body>
+  </div>
+</body>
