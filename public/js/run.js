@@ -1,6 +1,9 @@
 (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
     ({ key: 'AIzaSyAV9sbD6b0gEkPElkxTEmqTp7tQaT7eACA', v: "beta" });
 
+let lat;
+let lng;
+
 const newFormHandler = async event => {
   event.preventDefault()
 
@@ -9,13 +12,15 @@ const newFormHandler = async event => {
   const time = document.querySelector('#run-time').value.trim()
   //const datetime = document.querySelector('#run-datetime').value.trim()
 
-  if (name && distance && time) {
+  if (name && distance && time && lat && lng) {
     const response = await fetch(`/api/runs`, {
       method: 'POST',
       body: JSON.stringify({
         name: name,
         distance_ran: distance,
-        time_ran: time
+        time_ran: time,
+        lat: lat,
+        lng: lng
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -58,14 +63,14 @@ async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-  // The map, centered at Uluru
+  // The map, centered at San Diego
   map = new Map(document.getElementById("map"), {
     zoom: 10,
     center: position,
     mapId: "DEMO_MAP_ID",
   });
 
-  // The marker, positioned at Uluru
+  // The marker, positioned at San Diego
   // const marker = new AdvancedMarkerElement({
   //   map: map,
   //   position: position,
@@ -74,6 +79,7 @@ async function initMap() {
 
   map.addListener("click", (event) => {
     addMarker(event.latLng);
+    console.log(event.latLng)
   });
   // add event listeners for the buttons
   document
@@ -86,19 +92,39 @@ async function initMap() {
     .getElementById("delete-markers")
     .addEventListener("click", deleteMarkers);
   // Adds a marker at the center of the map.
-  addMarker(position);
+  // addMarker(position);
 }
+
+// async function fetchLocation(lat, lng) {
+//   console.log(lat, lng)
+//   // let locationURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAV9sbD6b0gEkPElkxTEmqTp7tQaT7eACA`;
+
+//   const locationURL = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&appid=6f83e6bf7b8afd8619d80b93245275c1`;
+//   const response = await fetch(locationURL, {
+//     method: 'GET',
+//   });
+//   const data = await response.json()
+//   console.log(data)
+// // if (response.ok) {
+// //     // document.location.replace('/profile');
+// //     // console.log(response.json())
+// // } else {
+// //     alert('Failed to delete run');
+// // }
+// }
+
 
 function addMarker(position) {
   const marker = new google.maps.Marker({
     position,
     map,
   });
-
+  lat = marker.getPosition().lat()
+  lng = marker.getPosition().lng()
+  console.log(lat, lng)
+  // fetchLocation(lat, lng)
   markers.push(marker);
 }
-
-
 
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {

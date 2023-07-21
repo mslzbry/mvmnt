@@ -2,12 +2,16 @@
     {
       "name": "Afternoon Jog",
       "distance_ran": 2,
-      "time_ran": 20
+      "time_ran": 20,
+      "lat": 32.45,
+      "lng": -117.45
     },
     {
       "name": "Evening Run",
       "distance_ran": 4,
-      "time_ran": 40
+      "time_ran": 40,
+      "lat": 36.45,
+      "lng": -117.45
     }
   ]
   
