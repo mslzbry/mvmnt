@@ -1,17 +1,17 @@
 [
-    {
-      "name": "Afternoon Jog",
-      "distance_ran": 2,
-      "time_ran": 20,
-      "lat": 32.45,
-      "lng": -117.45
-    },
-    {
-      "name": "Evening Run",
-      "distance_ran": 4,
-      "time_ran": 40,
-      "lat": 36.45,
-      "lng": -117.45
-    }
-  ]
+  {
+    "name": "Afternoon Jog",
+    "distance_ran": 2,
+    "time_ran": "00:20:00",
+    "lat": 32.45,
+    "lng": -117.45
+  },
+  {
+    "name": "Evening Run",
+    "distance_ran": 4.5,
+    "time_ran": "00:40:00",
+    "lat": 36.45,
+    "lng": -117.45
+  }
+]
   
