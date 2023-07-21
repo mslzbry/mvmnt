@@ -26,6 +26,14 @@ Run.init(
       type: DataTypes.STRING,
       allowNull: false
     },
+    lat: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+    },
+    lng: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+    },
     date_created: {
       type: DataTypes.DATE, 
       allowNull: false,
