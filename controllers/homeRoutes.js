@@ -14,11 +14,25 @@ router.get('/', async (req, res) => {
     })
 
     // Serialize data so the template can read it
-    const runs = runData.map(run => run.get({ plain: true }))
+    const allRuns = runData.map(run => run.get({ plain: true }))
 
+    // Get current date - we only care about the month, day, and year to show today's activity
+    // so set the hours, mins, seconds to 0 to compare
+    const now = new Date().setHours(0, 0, 0, 0)
+    const todaysDate = new Date().toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"}) 
+
+    let todaysRuns = []
+    for (let i = 0; i < allRuns.length; i++) {
+      // if the date returned from the DB of the run matches today's date
+      // add it to the todaysRuns array
+      if (new Date(allRuns[i].date_created).setHours(0, 0, 0, 0) == now)
+        todaysRuns.push(allRuns[i])
+    }
     // Pass serialized data and session flag into template
     res.render('homepage', {
-      runs,
+      todaysDate,
+      todaysRuns,
+      allRuns,
       logged_in: req.session.logged_in
     })
   } catch (err) {
