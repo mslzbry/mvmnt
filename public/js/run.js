@@ -13,6 +13,7 @@ const newFormHandler = async event => {
   else {
     form.classList.add('was-validated')
 
+    
     const name = document.querySelector('#run-name').value.trim()
     const distance = document.querySelector('#run-distance').value.trim()
     const time = document.querySelector('#run-time').value.trim()
@@ -54,9 +55,9 @@ const delButtonHandler = async event => {
     })
 
     if (response.ok) {
-      document.location.replace('/run')
+      document.location.replace('/run');
     } else {
-      alert('Failed to delete run')
+      alert('Failed to delete run');
     }
   }
 }
@@ -81,13 +82,6 @@ async function initMap() {
     mapId: "DEMO_MAP_ID",
   });
 
-  // The marker, positioned at San Diego
-  // const marker = new AdvancedMarkerElement({
-  //   map: map,
-  //   position: position,
-  //   title: "San Diego",
-  // });
-
   map.addListener("click", (event) => {
     addMarker(event.latLng);
     console.log(event.latLng)
@@ -106,25 +100,6 @@ async function initMap() {
   // addMarker(position);
 }
 
-// async function fetchLocation(lat, lng) {
-//   console.log(lat, lng)
-//   // let locationURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAV9sbD6b0gEkPElkxTEmqTp7tQaT7eACA`;
-
-//   const locationURL = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&appid=6f83e6bf7b8afd8619d80b93245275c1`;
-//   const response = await fetch(locationURL, {
-//     method: 'GET',
-//   });
-//   const data = await response.json()
-//   console.log(data)
-// // if (response.ok) {
-// //     // document.location.replace('/profile');
-// //     // console.log(response.json())
-// // } else {
-// //     alert('Failed to delete run');
-// // }
-// }
-
-
 function addMarker(position) {
   const marker = new google.maps.Marker({
     position,
@@ -133,7 +108,6 @@ function addMarker(position) {
   lat = marker.getPosition().lat()
   lng = marker.getPosition().lng()
   console.log(lat, lng)
-  // fetchLocation(lat, lng)
   markers.push(marker);
 }
 
@@ -164,9 +138,8 @@ document
   .querySelector('.new-run-form')
   .addEventListener('submit', newFormHandler)
 
-  if (document.querySelector('.run-list')) {
+if (document.querySelector('.run-list')) {
     document.querySelector('.run-list').addEventListener('click', delButtonHandler)
   }
-
 
 initMap()
