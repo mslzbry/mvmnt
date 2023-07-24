@@ -14,7 +14,17 @@ router.get('/', async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const allRuns = runData.map(run => run.get({ plain: true }))
+    let allRuns = runData.map(run => run.get({ plain: true }))
+
+    //sort all runs by most number of miles ran
+    allRuns.sort(function(a, b) {
+      let distanceA = parseFloat(a.distance_ran)
+      let distanceB = parseFloat(b.distance_ran)
+      // Compare the 2 distances
+      if (distanceA < distanceB) return 1;
+      if (distanceA > distanceB) return -1;
+      return 0;
+    })
 
     // Get current date - we only care about the month, day, and year to show today's activity
     // so set the hours, mins, seconds to 0 to compare
