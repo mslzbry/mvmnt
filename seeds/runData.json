@@ -1,13 +1,12 @@
 [
-    {
-      "name": "Afternoon Jog",
-      "distance_ran": 2,
-      "time_ran": 20
-    },
-    {
-      "name": "Evening Run",
-      "distance_ran": 4,
-      "time_ran": 40
-    }
-  ]
-  
+  {
+    "name": "Afternoon Jog",
+    "distance_ran": 2,
+    "time_ran": "00:20:00"
+  },
+  {
+    "name": "Evening Run",
+    "distance_ran": 4.5,
+    "time_ran": "00:40:00"
+  }
+]

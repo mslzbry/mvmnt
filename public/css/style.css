@@ -1,4 +1,4 @@
-.form-group {
+/*.form-group {
     border: black;
     padding: 0;
     background-color: blue;
@@ -7,6 +7,7 @@
     margin-left: 50px;
     justify-content: center;
 }
+
 .no-button {
     background: none;
     border: none;
@@ -15,18 +16,25 @@
     color: #1b89bc;
     text-decoration: none;
     font-size: 100%;
-  }
-  a {
+}
+
+#map {
+    height: 300px;
+}
+
+a {
     background-color: orangered;
     border: indigo;
     border-radius: 60px;
     font-size: x-large;
     font-weight: 500;
     font-family: 'Times New Roman', Times, serif;
-  }
-  h4 {
+}
+
+h4 {
     font-size: large;
     color: green;
+}
 
   }
   body {
