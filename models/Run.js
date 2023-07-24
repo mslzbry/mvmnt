@@ -17,14 +17,23 @@ Run.init(
       allowNull: false
     },
     // distance can be integers like 1, 2 (miles) or it can be in decimal like .5 miles
+    // cap it so that it only accepts up to 1 decimal place
     distance_ran: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,1),
       alowNull: false
     },
     // time will be stored in a specific format, hh:mm:ss
     time_ran: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    lat: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+    },
+    lng: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
     },
     date_created: {
       type: DataTypes.DATE, 

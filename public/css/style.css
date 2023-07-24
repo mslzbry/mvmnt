@@ -45,3 +45,45 @@ h4 {
     font-size: large;
     justify-content: center;
   }
+body {
+    background-color: sandybrown;
+} */
+
+i {
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+}
+
+#run-icon {
+    color: tomato;
+}
+.tomato{
+    background-color: tomato;  
+}
+.tomato-text{
+    color: tomato;  
+}
+
+a:link {
+    text-decoration: none;
+}
+
+
+a:visited {
+    text-decoration: none;
+}
+
+
+a:hover {
+    text-decoration: none;
+}
+
+
+a:active {
+    text-decoration: none;
+}
+
+#map {
+    height: 300px;
+}
