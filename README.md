@@ -17,6 +17,7 @@ mvmnt is a fitness web application that helps keep track of your run stats. This
 n/a
 
 ## Visuals
+![mvmnt in action](./gif/app.gif)
 
 ## GitHub Repo
 [mvmnt GitHub Repo](https://github.com/mslzbry/mvmnt)

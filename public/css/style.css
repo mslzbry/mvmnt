@@ -3,7 +3,9 @@
     padding: 0;
     background-color: blue;
     font-style: italic;
-    font-size: large;
+    font-size: larger;
+    margin-left: 50px;
+    justify-content: center;
 }
 
 .no-button {
@@ -23,8 +25,8 @@
 a {
     background-color: orangered;
     border: indigo;
-    border-radius: 30px;
-    font-size: medium;
+    border-radius: 60px;
+    font-size: x-large;
     font-weight: 500;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -34,6 +36,15 @@ h4 {
     color: green;
 }
 
+  }
+  body {
+    background-color: sandybrown ;
+  }
+  .submit {
+    background-color: antiquewhite;
+    font-size: large;
+    justify-content: center;
+  }
 body {
     background-color: sandybrown;
 } */
