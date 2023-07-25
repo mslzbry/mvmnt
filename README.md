@@ -1,9 +1,10 @@
 # mvmnt
 
-![License Badge](https://shields.io/badge/license-MIT-green)
-
 ## Description
-mvmnt is a fitness web application that helps keep track of your run stats. This app connects you with other users run stats. 
+mvmnt is a fitness web application that helps keep track of your run stats: geolocation, name of run, time ran, and distance ran. This app connects you with other users run stats by showing daily runs and all time run records.
+
+## Badges
+![License Badge](https://shields.io/badge/license-MIT-green)
 
 ## Table of Contents
 - [Description](#description)
@@ -13,10 +14,6 @@ mvmnt is a fitness web application that helps keep track of your run stats. This
 - [Deployed Site](#deployed-site)
 - [Develop Instructions](#develop-instructions)
 - [Authors and Acknowledgement](#authors-and-acknowledgement)
-- [License](#license)
-
-## Badges
-n/a
 
 ## Visuals
 ![mvmnt in action](./gif/mvmnt.gif)
@@ -46,6 +43,3 @@ Prereq: Go into the project root and run `npm i` to install the necessary node p
 [Carter Pang GitHub Repo](https://github.com/funkycba)
 
 [Elias Rivera GitHub Repo](https://github.com/eliasjrivera)
-
-## License
-n/a 
