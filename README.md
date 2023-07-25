@@ -3,15 +3,16 @@
 ## Description
 mvmnt is a fitness web application that helps keep track of your run stats: geolocation, name of run, time ran, and distance ran. This app connects you with other users run stats by showing daily runs and all time run records.
 
-## Technologies Used
-Heroku, Insomnia, Bootstrap, Font Awesome, NPM, MYSQL, Google Map JS API, VS Code 
-
 ## Badges
 ![License Badge](https://shields.io/badge/license-MIT-green)
+
+## Technologies Used
+Heroku, Insomnia, Bootstrap, Font Awesome, NPM, MYSQL, Google Map JS API, VS Code 
 
 ## Table of Contents
 - [Description](#description)
 - [Badges](#badges)
+- [Technologies Used](#technologies-used)
 - [Visuals](#visuals)
 - [GitHub Repo](#github-repo)
 - [Deployed Site](#deployed-site)

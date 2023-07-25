@@ -1,5 +1,5 @@
-const router = require('express').Router()
-const { Run, User } = require('../../models')
+const router = require('express').Router();
+const { Run, User } = require('../../models');
 
 // The `/api/users` endpoint
 
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
-})
+});
 
 router.get('/:id', async (req, res) => {
   try {
@@ -25,7 +25,7 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
-})
+});
 
 router.post('/', async (req, res) => {
   try {
@@ -71,7 +71,7 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
-})
+});
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
@@ -81,6 +81,6 @@ router.post('/logout', (req, res) => {
   } else {
     res.status(404).end()
   }
-})
+});
 
-module.exports = router
+module.exports = router;

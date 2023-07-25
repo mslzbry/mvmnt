@@ -38,7 +38,7 @@ const signupFormHandler = async event => {
     if (response.ok) {
       document.location.replace('/run')
     } else {
-      // TODO: need to alert that the password len / chars is not good if the user chooses a bad pw
+      // alert that the password len / chars is not good if the user chooses a bad pw
       alert(response.statusText)
     }
   }
