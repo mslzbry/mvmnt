@@ -1,6 +1,6 @@
-const router = require('express').Router()
-const { Run, User } = require('../../models')
-const withAuth = require('../../utils/auth')
+const router = require('express').Router();
+const { Run, User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // The `/api/runs` endpoint
 
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
-})
+});
 
 router.get('/:id', async (req, res) => {
   try {
@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
-})
+});
 
 router.post('/', withAuth, async (req, res) => {
   console.log('create a new run api')
@@ -41,7 +41,7 @@ router.post('/', withAuth, async (req, res) => {
     console.log('error is ', err)
     res.status(400).json(err)
   }
-})
+});
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
@@ -61,6 +61,6 @@ router.delete('/:id', withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err)
   }
-})
+});
 
-module.exports = router
+module.exports = router;
