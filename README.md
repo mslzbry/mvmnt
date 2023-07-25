@@ -1,5 +1,7 @@
 # mvmnt
+
 ![License Badge](https://shields.io/badge/license-MIT-green)
+
 ## Description
 mvmnt is a fitness web application that helps keep track of your run stats. This app connects you with other users run stats. 
 
